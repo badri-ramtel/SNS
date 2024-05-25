@@ -22,9 +22,9 @@
              <div class="primary-heading">About Us</div>
              <div>
                 <div class="about-text">
-                  {% comment %} {% for item in about %}
+                  {% for item in about %}
                     <p>{{item.about_content | safe}}</p>
-                  {% endfor %} {% endcomment %}
+                  {% endfor %}
                 </div>
                <div class="read-more-one"><a href="{% url 'aboutapp-about' %}" class="btn">Read More...</a></div> 
              </div>
