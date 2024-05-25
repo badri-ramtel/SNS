@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | About SNS {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+  <div class="content">
+    <div class="design row">
+      
+      <div class="col-md-8 col-sm-12 p-3">
+        <div>
+          <div class="about-content m-3">
+            <div class="primary-heading">About SNS</div>
+            <div>
+              <div class="pt-2 sub-heading fw-bold">About SNS</div>
+              <div class="about-content">
+                {% for item in abo %}
+                  {{item.about_content | safe}} <br>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 p-3">
+        {% include 'core/sidebar.html' %} 
+      </div>
+
+    </div>
+  </div>
+{% endblock content %}

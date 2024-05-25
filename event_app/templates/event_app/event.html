@@ -1,0 +1,76 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | Event {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+  <div class="content">
+    <div class="gallery-page">
+      <div class="design-list pb-3">
+        <div class="primary-heading">Events</div>
+      </div>
+    </div>
+
+    <div class="design">
+      <div class="row"> 
+      <div class="col-md-2 col-sm-12">
+        <div class="row">
+          <div class="card border border-info">
+            <div class="card-header text-center fs-3">Events List</div>
+            <ul class="list-group list-group-flush" id="list-group">
+              <li class="list-group-item nav-text"><a class="nav-link" href="{% url 'eventapp-event' %}">All</a></li>
+              {% for item in eventor %}
+              <li class="list-group-item text-nowrap nav-text"> 
+                <a class="nav-link overflow-x-hidden" href="{% url 'eventapp-event' %}?eventor={{item.event_name}}">{{item.event_name}}</a>
+              </li>
+              {% endfor %}
+              {% comment %} <a href="{% url 'eventapp-add' %}" class="btn btn-primary btn-block btn-sm m-1">Add Events</a> {% endcomment %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-10 col-sm-12">
+        <div class="row me-5">
+          {% for items in page_obj %}
+            <div class="album">
+              <div class="album-cover">
+                  <div class="album-text-title pb-3 fs-4 text-decoration-underline">{{items.title}}</div>
+                  <div class="album-brief">{{items.brief}}</div>
+              </div>
+              <div class="album-text-events"> 
+                <p class="album-date">{{items.date}}</p>
+                <a href="{% url 'eventapp-viewevent' items.id %}" class="">Read More...</a>
+              </div>
+              <hr>
+            </div>
+            {% empty %} 
+            <div class="text-center m-5"><h3>Sorry!!! No Any Events Currently Available....</h3></div>
+          {% endfor %}
+        </div> 
+
+        <br>
+        <div class="text-center">
+          {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
+          {% endif %}
+
+          page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+          {% endif %}
+        </div>
+        <br>  
+
+      </div>
+    </row> 
+    </div>
+  </div>      
+
+{% endblock content %}

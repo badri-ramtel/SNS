@@ -1,0 +1,72 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | Gallery {% endblock title %}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+  <div class="content justify-content-center">
+    <div class="gallery-page">
+        <div class="design-list pb-3">
+          <div class="primary-heading">Gallery</div>
+        </div>
+    </div>
+
+    <div class="design">
+      <div class="col-md-2">
+        <div class="row">
+          <div class="card border border-info">
+             <div class="card-header text-center">Categories</div>
+             <ul class="list-group list-group-flush" id="list-group"> 
+               <li class="list-group-item"><a class="nav-link" href="{% url 'galleryapp-gallery' %}">All</a></li>
+              {% for category in categories %}
+              <li class="list-group-item text-nowrap nav-text">
+                 <a class="nav-link overflow-x-hidden" href="{% url 'galleryapp-gallery' %}?category={{category.name}}">{{category.name}}</a>
+              </li>
+              {% endfor %}
+             </ul>
+          </div>
+        </div>
+      </div> 
+
+      <div class="col-md-10">
+        <div class="row">
+          {% for photo in page_obj %}
+          <div class="col-md-3 col-sm-6 m-0 p-0"> 
+            <div class="album">
+              <div class="album-cover">
+                <img class="image-thumbnail w-100" src="{{photo.image.url}}" alt="picture here..."/>
+              </div>
+              <div class="album-text" id="gallery-view">
+                <div class="album-text-title">{{photo.category.name}}</div>
+                <a href="{% url 'galleryapp-photo' photo.id %}" class="text-white">View</a>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+            <div class="text-center m-5"><h3>No Photos Uploaded....</h3></div>
+          {% endfor %} 
+        </div>
+
+        <br>
+        <div class="text-center">
+          {% if page_obj.has_previous %}
+            {% comment %} <a href="?page=1"> &laquo First </a> {% endcomment %}
+            <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
+          {% endif %}
+          page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            {% comment %} <a href="?page={{page_obj.paginator.num_pages}}">Last &raquo </a> {% endcomment %}
+          {% endif %}
+        </div>
+        <br>  
+          
+      </div>
+    </div>
+  </div>      
+{% endblock content %}

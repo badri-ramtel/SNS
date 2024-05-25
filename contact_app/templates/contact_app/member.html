@@ -1,0 +1,145 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | Membership {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+
+  <!-- Content-1 Start -->
+  <div class="content">
+    <div class="design row">
+      <div class="col-md-8 col-sm-12 p-3">
+        <div>
+            <div class="about-content px-2">
+              <div class="primary-heading">Membership</div>
+              <div> 
+                <div class="my-3">
+                  <p class="text-secondary fw-bold">Membership</p>
+                  <p class="text-secondary">Please fill up the following form, pay the amount and upload the screenshot of the payment.</p>
+                </div>
+
+                <div class="messenger">
+                  {% for msg in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                      {{msg}}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  {% endfor %}
+                </div>
+ 
+                <div class="contact-form">
+                    <form action="" method="POST" enctype="multipart/form-data" class="row g-3">
+                        {% csrf_token %}
+                        <div class="col-md-12 pt-2">
+                          <h5>Membership Form</h5>
+                        </div>
+                        <hr>
+                        <div class="col-md-4 p-2">
+                          <label for="fname" class="form-label required">First Name</label>
+                          <input type="text" class="form-control" name="fname" id="fname" required>
+                        </div>
+                        <div class="col-md-4 p-2">
+                          <label for="lname" class="form-label required">Last Name</label>
+                          <input type="text" class="form-control" name="lname" id="lname" required>
+                        </div>
+                        <div class="col-md-4 p-2">
+                          <label for="email" class="form-label required">Email</label>
+                          <input type="email" class="form-control" name="email" id="email" required>
+                        </div>
+              
+                        <div class="col-4 p-2">
+                          <label for="contact" class="form-label required">Contact Number</label>
+                          <input type="phone" class="form-control" name="contact" id="phone" required>
+                        </div>
+                        <div class="col-4 p-2">
+                          <label for="addressone" class="form-label required">Address 1</label>
+                          <input type="text" class="form-control" name="address1" id="address1" required>
+                        </div>
+                        <div class="col-4 p-2">
+                          <label for="addresstwo" class="form-label">Address 2</label>
+                          <input type="text" class="form-control" name="address2" id="address2">
+                        </div>
+                        
+              
+                        <div class="col-4 p-2">
+                          <label for="city" class="form-label required">City</label>
+                          <input type="text" class="form-control" name="city" id="city" required>
+                        </div>
+                        <div class="col-4 p-2">
+                          <label for="province" class="form-label required">Province</label>
+                          <input type="text" class="form-control" name="province" id="province" required>
+                        </div>
+                        <div class="col-4 p-2">
+                          <label for="pcode" class="form-label required">Postal Code</label>
+                          <input type="number" class="form-control" name="pcode" id="pcode" required>
+                        </div>
+          
+                        <div class="col-12 p-2">
+                          <fieldset class="row mb-3">
+                              <legend class="col-form-label col-sm-3 pt-0 required">Membership Type</legend>
+                              <div class="col-sm-9">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="membership" id="GENERAL" value="GENERAL" checked>
+                                  <label class="form-check-label" for="general">
+                                    General Member (20$ for 2 Years Validate)
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="membership" id="LIFETIME" value="LIFETIME">
+                                  <label class="form-check-label" for="lifetime">
+                                    Life time Member (100$ for Life Time Validate)
+                                  </label>
+                                </div>
+                              </div>
+                            </fieldset>
+                        </div>
+          
+                        <div>
+                          <div class="mb-3 p-2">
+                              <label for="formFile" class="form-label required">Screenshot of payment</label>
+                              <input class="form-control" type="file" name="screenshot" id="screenshot" required>
+                          </div>
+                        </div>
+                        
+                        <div class="col-12 p-2">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="tpcheck" required>
+                            <label class="form-check-label required" for="gridCheck">
+                              I have read and accepted the <a href="#">Terms of Use and Privacy Policy.</a>
+                            </label>
+                          </div>
+                        </div>
+          
+                        <div class="col-12 p-2">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="encheck" required>
+                            <label class="form-check-label required" for="gridCheck">
+                              SNS may keep me informed via email about events and newsletters.
+                            </label>
+                          </div>
+                        </div>
+                        
+                        <div class="col-12 p-2">
+                          <button type="submit" class="btn btn-success mb-3">Submit</button>
+                        </div>
+              
+                    </form>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12 p-3">
+        {% include 'core/sidebar.html' %}
+      </div>
+    </div>
+  </div>
+ <!-- Content-1 End -->
+
+{% endblock content %}

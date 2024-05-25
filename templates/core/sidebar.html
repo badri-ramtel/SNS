@@ -1,0 +1,75 @@
+<div>
+    {% for item in pre %}
+        <div class="card-design">
+            <div class="text-center text-design">Message from President</div>
+            <div class="card mx-4">
+                <div class="img-size mx-4 mt-1">
+                    <img src="{{item.image.url}}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body text-center">
+                    <div class="card-title"><h5>{{item.name}}</h5></div>
+                </div>
+                <div>
+                    <em class="president-card_message">
+                        <p class="">{{item.p_message}}</p>
+                    </em>
+                </div>
+                <div class="read-more-one text-center"><a href="{% url 'mainapp-president' %}" class="btn">Read More</a></div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="pt-4">
+    <div class="card-design">
+        <div class="design-list">
+            <div class="primary-heading"><h4>Recent Events</h4></div>
+            <div class="me-4"><h2><i class="bi bi-calendar-event"></i></h2></div>
+        </div>
+        <div>
+            <div class="list">
+                {% for item in eventor %}
+                    <div class="list-card">
+                        <div class="list-card-content">
+                            <div class="card-content-left ms-3">
+                                <p><a href="{% url 'eventapp-event' %}?eventor={{item.event_name}}">{{item.event_name}}</a></p>
+                            </div>
+                            <div class="card-content-right ms-3"> 
+                                <p>{{item.event_created_date}}</p>
+                            </div>
+                        </div>
+                    </div> 
+                    <hr>
+                {% endfor %}
+            </div>
+            <div class="read-more-one mx-4"><a href="{% url 'eventapp-event' %}" class="">See More...</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="pt-4">
+    <div class="card-design">
+      <div class="design-list">
+        <div class="primary-heading">News/Posts</div>
+        <div class="me-4"><h2><i class="bi bi-newspaper"></i></h2></div>
+      </div>
+      <div>
+        <div class="list">
+            {% for item in news %}
+                <div class="list-card">
+                    <div class="list-card-content">
+                        <div class="card-content-left ms-3">
+                            <p><a href="{% url 'eventapp-viewevent' item.id %}">{{item.title}}</a></p>
+                        </div>
+                        <div class="card-content-right ms-3">
+                            <p>{{item.date}}</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+        <div class="read-more-one mx-4"><a href="{% url 'eventapp-event'%}?eventor=badri" class="btn">See More...</a></div> 
+      </div>
+    </div>
+</div>

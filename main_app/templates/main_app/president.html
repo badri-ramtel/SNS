@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} About | Page {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+  <!-- Content-1 Start -->
+  <div class="content">
+    <div class="design">
+       <div class="content-left">
+         <div>
+           <div class="about-content">
+             <div class="primary-heading">President's Message</div>
+             <div>
+              {% for item in president %}
+                <div class="about-text d-flex">
+                  <div class="president-detail col-md-4">
+                    <img class="image-thumbnail" src="{{item.image.url}}" alt="picture here..."/>
+                    <p class="pt-3"><h5>{{item.name}}</h5></p>
+                  </div>
+                  <div class="col-md-8 px-5"><p>{{item.p_message}}</p></div>  
+                </div>
+              {% endfor %}
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <div class="content-right">
+        {% include 'core/sidebar.html' %}
+       </div>
+    </div>
+  </div>
+ <!-- Content-1 End -->
+{% endblock content %}

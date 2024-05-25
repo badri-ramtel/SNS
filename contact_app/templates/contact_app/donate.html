@@ -1,0 +1,135 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | Donation {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+  <div class="content">
+    <div class="design row">
+    {% comment %} <div class="row">  {% endcomment %}
+      <div class="col-md-8 col-sm-12 p-3">
+        <div>
+            <div class="about-content px-2">
+              <div class="primary-heading">Donation</div>
+              <div>
+                <div class="my-3">
+                  <p class="text-secondary fw-bold">Donation</p>
+                  <p class="text-secondary">SNS is a volunteer-based organization working toward helping the local Nepalese family along with fostering our culture. Your donation will help us to increase our support to many more Nepalese family. You can directly contribute (interac) for good cause at <a href="mailto:fund.for.sns@gmail.com">fund.for.sns@gmail.com.</a></p>
+                </div>
+
+                <div class="messenger">
+                  {% for msg in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                      {{msg}}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  {% endfor %}
+                </div>
+
+                <div class="contact-form">
+                  <form action="" method="POST" enctype="multipart/form-data" class="row g-3">
+                    {% csrf_token %}
+                      <div class="col-md-12 pt-2">
+                        <h5>Donation Form</h5>
+                      </div>
+                      <hr>
+                      <div class="col-md-4 p-2">
+                        <label for="fname" class="form-label required">First Name</label>
+                        <input type="text" class="form-control" name="fname" id="fname" required>
+                      </div>
+                      <div class="col-md-4 p-2">
+                        <label for="lname" class="form-label required">Last Name</label>
+                        <input type="text" class="form-control" name="lname" id="lname" required>
+                      </div>
+                      <div class="col-md-4 p-2">
+                        <label for="email" class="form-label required">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" required>
+                      </div>
+            
+                      <div class="col-12 p-2">
+                        <div class="col-md-4">
+                          <label for="contact" class="form-label required">Contact Number</label>
+                          <input type="phone" class="form-control" name="contact" id="phone" required>
+                        </div>
+                      </div>
+                      
+                      <div class="col-4 p-2">
+                        <label for="address1" class="form-label required">Address 1</label>
+                        <input type="text" class="form-control" name="address1" id="address1" required>
+                      </div>
+                      <div class="col-4 p-2">
+                        <label for="address2" class="form-label">Address 2</label>
+                        <input type="text" class="form-control" name="address2" id="address2">
+                      </div>
+                      <div class="col-4 p-2">
+                        <label for="city" class="form-label required">City</label>
+                        <input type="text" class="form-control" name="city" id="city" required>
+                      </div>
+          
+                      <div class="col-4 p-2">
+                        <label for="state" class="form-label required">State</label>
+                        <input type="text" class="form-control" name="state" id="state" required>
+                      </div>
+                      <div class="col-4 p-2">
+                        <label for="pcode" class="form-label required">Postal Code</label>
+                        <input type="number" class="form-control" name="pcode" id="pcode" required>
+                      </div>
+                      <div class="col-4 p-2">
+                        <label for="country" class="form-label required">Country</label>
+                        <Select name="country" id="countries" class="form-select" required>
+                          {% comment %} <option value="Canada"></option> {% endcomment %}
+                        </select>
+                      </div>
+          
+                      <div class="col-6 p-2">
+                        <label for="donation_type" class="form-label required">Donation Type</label>
+                        <Select name="donation_type" id="donation_type" class="form-select" required>
+                          <option>Select a Donation...</option>
+                          <option value="GENERAL">General</option>
+                          <option value="COVID">Covid</option>
+                          <option value="EARTHQUAKE">Earthquake</option>
+                        </select>
+                      </div>
+                      <div class="col-6 p-2">
+                        <label for="amount" class="form-label required">Donaton Amount (CAD)</label>
+                        <input type="number" class="form-control" name="amount" id="amount" required>
+                      </div>
+          
+                      <div>
+                        <div class="mb-3 p-2">
+                            <label for="screenshot" class="form-label required">Screenshot of payment</label>
+                            <input class="form-control" type="file" name="screenshot" id="screenshot" required>
+                        </div>
+                      </div>
+                      
+          
+                      <div class="col-12 p-2">
+                        We value your privacy. Please read our <a href="{% url 'aboutapp-terms' %}">Privacy and Policy</a> for details.  
+                      </div>
+                        
+                      <div class="col-12 p-2">
+                        <button type="submit" class="btn btn-success mb-3">Submit</button>
+                      </div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12 p-3">
+        {% include 'core/sidebar.html' %}
+      </div>
+    {% comment %} </div> {% endcomment %}
+      
+    </div>
+  </div>
+ <!-- Content-1 End -->
+
+{% endblock content %}

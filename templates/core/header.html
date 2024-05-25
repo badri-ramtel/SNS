@@ -1,0 +1,86 @@
+<!-- Hearder Start -->
+<header class="main">
+    <div class="con flexer">
+        <div class="logo-info">
+            <div class="logo">
+                <a class="logo1" href="{% url 'mainapp-home' %}"><img src="/static/images/logo.jpeg" alt="Logo" width="80" height="80"></a>
+            </div>
+            
+            <div class="info">
+                <div class="info-title"><h2><a href="{% url 'mainapp-home' %}">Sirjansil Nepali Samaj</a></h2></div>
+                <div class="info-title-np"><a href="{% url 'mainapp-home' %}">सृजनशील नेपाली समाज</a></div>
+                <div class="info-est"><a href="{% url 'mainapp-home' %}">Estd. 2015 | Toronto, Canada</a></div>
+            </div>
+        </div>
+
+        
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="nav-menu"  id="navbarSupportedContent">
+                <ul class="nav-submenu collapse navbar-collapse" id="nav-submenu navbarSupportedContent">
+                    <li class="nav-item" id="nav-item">
+                        <a class="nav-link" href="{% url 'mainapp-home' %}">Home</a>
+                    </li>
+    
+                    <li class="nav-item dropdown" id="nav-item">
+                        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>About</a>
+                        <ul class="dropdown-menu" id="sub-menu">
+                            <li class="dropdown-item" id="sub-dropdown-item"><a  href="{% url 'aboutapp-about' %}">About SNS</a></li>
+                            <li class="dropdown-item" id="sub-dropdown-item"><a  href="{% url 'aboutapp-vision' %}">Vision</a></li>
+                            <li class="dropdown-item" id="sub-dropdown-item"><a  href="{% url 'aboutapp-terms' %}">Terms and Conditions</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>Document</a>
+                        <ul class="dropdown-menu" id="sub-menu">
+                            <li class="dropdown-item" id="sub-dropdown-item"><a  href="{% url 'documentapp-lac' %}">Laws and Convention</a></li>
+                            <li class="dropdown-item" id="sub-dropdown-item"><a  href="{% url 'documentapp-reference' %}">References</a></li>
+                            <li class="dropdown-item" id="sub-dropdown-item"><a  href="{% url 'documentapp-appreciation' %}">Appreciations</a></li>
+                            <li class="dropdown-item" id="sub-dropdown-item"><a  href="{% url 'documentapp-register' %}">Program Registration</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'eventapp-event' %}">Events</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>Teams</a>
+                        <ul class="dropdown-menu" id="sub-menu">
+                            <li class="dropdown-item" id="sub-dropdown-item"><a href="{% url 'teamapp-team' %}">Executive Committee</a></li>
+                        </ul>
+                    </li>
+                  
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'galleryapp-gallery' %}">Gallery</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>Contact</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item" id="sub-dropdown-item"><a  href="{% url 'contactapp-contact' %}">Contact Us</a></li>
+                            <li class="dropdown-item" id="sub-dropdown-item"><a  href="{% url 'contactapp-member' %}">Membership</a></li>
+                            <li class="dropdown-item" id="sub-dropdown-item"><a  href="{% url 'contactapp-vacancy' %}">Vacancy</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item buttons mx-1">
+                        <a class="nav-link text-white p-1" href="{% url 'contactapp-donate' %}" ><span><i class="bi bi-cash-coin"></i></span>&nbsp; Donate</a>
+                    </li>
+
+                </ul>
+
+                
+            </div>
+            
+            
+        </nav>
+
+         
+    </div>
+</header>
+<!-- Hearder End -->

@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | Appreciation {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+  <div class="content">
+    <div class="design row">
+      <div class="col-md-8 col-sm-12 p-3">
+        <div>
+          <div class="doc-table">
+            <div class="about-content">
+              <div class="primary-heading">Appreciation</div>
+              <div>
+                <div class="my-3"><p class="text-secondary">View and download the Company Appreciation related documents</p></div>
+                <div class="aboutapp-text">
+                    <div>
+                      <table cellspacing="0" cellpadding="0" border="2">
+                        <colgroup>
+                          <col width="314">
+                          <col width="200">
+                          <col width="200">
+                        </colgroup>
+                        <thead class="">
+                          <tr class="wrapper">
+                            <th colspan="1" rowspan="1" >
+                              <div>Name
+                                <span class="caret-wrapper">
+                                  <h6><i class="bi bi-caret-up"></i></h6>
+                                  <h6><i class="bi bi-caret-down"></i></h6>
+                                </span>
+                              </div>
+                            </th>
+                            <th colspan="1" rowspan="1" ><div>Added On</div></th>
+                            <th colspan="1" rowspan="1" ><div class="text-center">View/Download</div></th>
+                          </tr>
+                        </thead>
+                          {% for item in docs %}
+                          <tr class="text-secondary">
+                            <td colspan="1" rowspan="1"><div>{{item.f_name}}</div></td>
+                            <td colspan="1" rowspan="1"><div>{{item.c_date}}</div></td>
+                            <td colspan="1" rowspan="1">
+                              <div class="text-center">
+                                <button type="button" class="is-circle"><h6><a href="/media/{{item.files}}" target="_blank"><i class="bi bi-eye"></i></a></h6></button>
+                                <button type="button" class="is-circle doc-download"><h6><a href="/media/{{item.files}}" download><i class="bi bi-download"></i></a></h6></button> 
+                              </div>
+                            </td>
+                          </tr>
+                          {% endfor %}
+                      </table>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12 p-3">
+        {% include 'core/sidebar.html' %}
+      </div>
+      
+    </div>
+  </div>
+{% endblock content %}

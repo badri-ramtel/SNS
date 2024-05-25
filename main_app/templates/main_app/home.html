@@ -1,0 +1,313 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | Home {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+ 
+  </div>
+  <!-- dummy end -->
+
+<!-- Banner Start -->
+{% include 'main_app/slider.html' %}
+<!-- Banner End -->
+
+<!-- About and President content Start -->
+<div class="content">
+    <div class="design row">
+       <div class="col-md-8 col-sm-12 p-3" data-aos="fade-up" data-aos-duration="1500">
+         <div>
+           <div class="about-content">
+             <div class="primary-heading">About Us</div>
+             <div>
+                <div class="about-text">
+                  {% comment %} {% for item in about %}
+                    <p>{{item.about_content | safe}}</p>
+                  {% endfor %} {% endcomment %}
+                </div>
+               <div class="read-more-one"><a href="{% url 'aboutapp-about' %}" class="btn">Read More...</a></div> 
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <div class="col-md-4 col-sm-6 p-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="3000">
+         <div>
+          {% for item in pre %}
+           <div class="card-design">
+             <div class="text-center text-design">Message from President</div>
+             <div class="card mx-4">
+               <div class="img-size">
+                 <img src="{{item.image.url}}" class="card-img-top" alt="...">
+               </div>
+               <div class="card-body text-center">
+                 <div class="card-title"> <h5>{{item.name}}</h5> </div>
+               </div>
+               <div>
+                 <em class="president-card_message">
+                   <p class="">{{item.p_message}}</p>
+                 </em>
+               </div>
+               <div class="read-more-one text-center"><a class="btn" href="{% url 'mainapp-president' %}">Read More...</a></div>
+             </div>
+           </div>
+          {% endfor %}
+         </div>
+       </div>
+    </div>
+</div>
+<!-- About and President content End -->
+
+<!-- events, news and docsuments css Start -->
+<div class="content">
+    <div class="design row">
+
+      <div class="col-md-4 col-sm-8 p-3">
+        <div>
+          <div class="card-design">
+            <div class="design-list">
+              <div class="primary-heading overflow-hidden">Events</div> 
+              <div class="me-4"><h2><i class="bi bi-calendar-event"></i></h2></div>
+            </div>
+            <div class="list">
+              {% for item in eventor %}
+                <div class="list-card">
+                  <div class="list-card-content">
+                    <div class="card-content-left ms-3">
+                      <p><a href="{% url 'eventapp-event' %}?eventor={{item.event_name}}">{{item.event_name}}</a></p> 
+                    </div>
+                    <div class="card-content-right"> 
+                      <p>{{item.event_created_date}}</p>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+              {% endfor %} 
+            </div>
+            <div class="read-more-one mx-4"><a href="{% url 'eventapp-event' %}" class="btn">See More...</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-8 p-3">
+        <div>
+          <div class="card-design">
+            <div class="design-list">
+              <div class="primary-heading overflow-hidden">News/Posts</div>
+              <div class="me-4"><h2><i class="bi bi-newspaper"></i></h2></div>
+            </div>
+            <div class="list">
+              {% for item in news %}
+              <div class="list-card">
+                <div class="list-card-content">
+                  <div class="card-content-left ms-3">
+                    <p><a href="{% url 'eventapp-viewevent' item.id %}">{{item.title}}</a></p>
+                  </div>
+                  <div class="card-content-right">
+                    <p>{{item.date}}</p>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              {% endfor %}
+            </div>
+            <div class="read-more-one mx-4"><a href="{% url 'eventapp-event'%}?eventor=badri" class="btn">See More...</a></div> 
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-8 p-3">
+        <div>
+          <div class="card-design">
+            <div class="design-list">
+              <div class="primary-heading overflow-hidden">Document/Link</div>
+              <div class="me-4"><h2><i class="bi bi-link-45deg"></i></h2></div>
+            </div>
+            <div>
+              <div class="list">
+                {% for item in docs %}
+                <div class="list-card">
+                  <div class="list-card-content align-center">
+                    <div class="card-content-left ms-3">
+                      <p>
+                        <a href="{% url 'documentapp-lac' %}">{{item.f_name}}</a>
+                        {% comment %} <a href="{% url 'documentapp-reference' %}">{{item.f_name}}</a>
+                        <a href="{% url 'documentapp-appreciation' %}">{{item.f_name}}</a> {% endcomment %}
+                      </p>
+                    </div>
+                    <div class="card-content-right">
+                      <p>{{item.c_date}}</p>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                {% endfor %}
+              </div>
+              <div class="read-more-one mx-4"><a href="{% url 'documentapp-register' %}" class="btn">See More...</a></div> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+<!-- events, news and docsuments css  End -->
+
+<!-- Gallery, Calendar and Advertise css Start -->
+<div class="content">
+    <div class="row">
+
+      <!-- Gallery Start-->
+      <div class="col-md-6 col-sm-12">
+        <div class="">
+          <div class="design-list d-flex justify-content-center">
+            <div class="primary-heading overflow-hidden">Gallery</div>
+          </div>
+          <div class="design-list" id="gallery">
+            <div class="row gallery-view" id="gallery-views">
+              <div class="col-md-2" style="height: 22rem;">
+                <div class="row">
+                  <div class="card border border-primary overflow-hidden text-nowrap">
+                    <div class="text-center">Category</div>
+                    <ul class="list-group list-group-flush list-group-home" id="home-list-group">
+                      {% for category in categories %}
+                      <li class="list-group-item">
+                        {% comment %} {{category.name}} {% endcomment %}
+                        <a class="text-dark" href="{% url 'galleryapp-gallery' %}?category={{category.name}}">{{category.name}}</a>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                    <a href="{% url 'galleryapp-gallery' %}" class="text-center">For More...</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-10">
+                <div class="row">
+                  {% for photo in photos %}
+                    {% if forloop.counter < 7 %}
+                      <div class="col-md-4 m-0 p-0"> 
+                        <div class="album" id="home-album">
+                          <div class="album-cover">
+                            <a href="{% url 'galleryapp-photo' photo.id %}">
+                              <img class="image-thumbnail w-100" src="{{photo.image.url}}" alt="picture here..."/>
+                            </a>
+                          </div>
+                        </div> 
+                      </div>
+                    {% endif %}
+                  {% empty %}
+                    <div class="text-center m-5"><h3>No Photos Uploaded....</h3></div>
+                  {% endfor %} 
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+      <!-- Gallery End-->
+
+      <!-- Calendar Start -->
+      <div class="col-md-3 col-sm-6">
+        <div>
+          <div class="design-list d-flex justify-content-center">
+            <div class="primary-heading overflow-hidden">Calendar</div>
+          </div> 
+          <div class="design-list">
+            {% comment %} <div class="row"> {% endcomment %}
+              <div class="calendar dark">
+                <div class="calendar_inner">
+                  <div class="calendar_controls">
+                      <div class="calendar_headings">
+                        <i class="fa-solid fa-arrow-left" id="prev"></i>
+                        <h4 class="month_year"></h4>
+                        <i class="fa-solid fa-arrow-right" id="next"></i>
+                      </div>
+                      <div class="current_datetime">
+                        <p class="daytxt">Today</p>
+                        <p class="datetxt">Tue, 10, Oct 2023</p>
+                      </div>
+                      <div class="days_date">
+                        <ul class="days">
+                          <li>Sun</li>
+                          <li>Mon</li>
+                          <li>Tue</li>
+                          <li>Wed</li>
+                          <li>Thu</li>
+                          <li>Fri</li>
+                          <li>Sat</li>
+                        </ul>
+                        <ul class="dates">
+                          <!-- <li>1</li>
+                          <li>2</li>
+                          <li>3</li>
+                          <li>4</li>
+                          <li class="active">5</li>
+                          <li>6</li>
+                          <li>7</li>
+                          <li>8</li>
+                          <li>9</li>
+                          <li>10</li>
+                          <li>11</li>
+                          <li>12</li>
+                          <li>13</li>
+                          <li>14</li>
+                          <li>15</li>
+                          <li>17</li>
+                          <li>18</li>
+                          <li>19</li>
+                          <li>20</li>
+                          <li>21</li>
+                          <li>22</li>
+                          <li>23</li>
+                          <li>24</li>
+                          <li>25</li>
+                          <li class="dummy">26</li>
+                          <li class="dummy">27</li>
+                          <li class="dummy">28</li>
+                          <li class="dummy">29</li>
+                          <li class="dummy">30</li> -->
+                        </ul>
+                      </div>
+                  </div>
+                </div>
+              </div> 
+            {% comment %} </div> {% endcomment %}
+          </div>
+        </div>
+      </div>
+      <!-- Calendar End -->
+
+      <!-- ads and notice Start -->
+      <div class="col-md-3 col-sm-6">
+        <div>
+          <div class="design-list d-flex justify-content-center">
+            <div class="primary-heading overflow-hidden">Ads/Notice</div>
+          </div>
+
+          <div class="design-list justify-content-center" >
+            <div>
+                {% comment %} <video style="height: 340px; max-width: 300px;" autoplay muted>
+                  {% for obj in adv %}
+                    {% if forloop.counter == 1 %}
+                      <source src="{{obj.content.url}}" type="video/mp4">
+                    {% endif %}
+                  {% endfor %}
+                </video> {% endcomment %}
+                {% for obj in adv %}
+                  {% if forloop.counter == 1 %}
+                    <img class="image-thumbnail" src="{{obj.image.url}}" alt="picture here..." style="height: 340px; width: 310px;"/>
+                  {% endif %}
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ads and notice End -->
+
+    </div>
+</div>
+<!-- Gallery, Calendar and Advertise css End -->
+
+{% endblock content %}

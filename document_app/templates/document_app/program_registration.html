@@ -1,0 +1,184 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | Program Registration {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+  <div class="content">
+    <div class="design row">
+      <div class="col-md-8 col-sm-12 p-3">
+        <div>
+          <div class="doc-table">
+            <div class="about-content">
+              <div class="primary-heading">Program Registration</div>
+              <div>
+                <div class="my-3"><p class="text-secondary">View and download the Company Program Registration Forms</p></div>
+                <div class="aboutapp-text">
+                    <div>
+                      <table cellspacing="0" cellpadding="0" border="2">
+                        <colgroup>
+                          <col width="314">
+                          <col width="200">
+                          <col width="200">
+                        </colgroup>
+                        <thead class="">
+                          <tr class="wrapper">
+                            <th colspan="1" rowspan="1" >
+                              <div>Name
+                                <span class="caret-wrapper">
+                                  <h6><i class="bi bi-caret-up"></i></h6>
+                                  <h6><i class="bi bi-caret-down"></i></h6>
+                                </span>
+                              </div>
+                            </th>
+                            <th colspan="1" rowspan="1" ><div>Added On</div></th>
+                            <th colspan="1" rowspan="1" ><div class="text-center">View/Download</div></th>
+                          </tr>
+                        </thead>
+                          {% for item in reg %}
+                          <tr class="text-secondary">
+                            <td colspan="1" rowspan="1"><div>{{item.f_name}}</div></td>
+                            <td colspan="1" rowspan="1"><div>{{item.c_date}}</div></td>
+                            <td colspan="1" rowspan="1">
+                              <div class="text-center">
+                                <button type="button" class="is-circle"><h6><i class="bi bi-eye"></i></h6></button>
+                                <button type="button" class="is-circle doc-download"><h6><i class="bi bi-download"></i></h6></button> 
+                              </div>
+                            </td>
+                          </tr>
+                          {% endfor %}
+                      </table>
+                    </div>
+                </div>
+
+                <div class="messenger pt-3">
+                  {% for msg in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                      {{msg}}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  {% endfor %}
+                </div>
+
+                <div class="contact-form mt-2 me-4 mx-2">
+                  <form action="" method="POST" enctype="multipart/form-data" class="row g-3">
+                    {% csrf_token %}
+                    <div class="col-md-12 pt-2">
+                      <h5>Program Registration Form</h5>
+                    </div>
+                    <hr>
+                    <div class="col-md-6 p-2">
+                      <label for="fname" class="form-label required">Praticipant Full Name</label>
+                      <input type="text" class="form-control" name="yname" id="yname" required>
+                    </div>
+                    <div class="col-md-6 p-2">
+                      <label for="age" class="form-label required">Age</label>
+                      <input type="number" class="form-control" name="age" id="age" required>
+                    </div>
+          
+                    <div class="col-12 p-2">
+                      <div class="col-md-6">
+                        <label for="address" class="form-label required">Address</label>
+                        <input type="text" class="form-control" name="address" id="address" required>
+                      </div>
+                    </div>
+                    
+                    <div class="col-4 p-2">
+                      <label for="city" class="form-label required">City</label>
+                      <input type="text" class="form-control" name="city" id="city" required>
+                    </div>
+                    <div class="col-4 p-2">
+                      <label for="province" class="form-label required">Province</label>
+                      <input type="text" class="form-control" name="province" id="province" required>
+                    </div>
+                    <div class="col-4 p-2">
+                      <label for="pcode" class="form-label">Postal Code</label>
+                      <input type="number" class="form-control" name="pcode" id="pcode">
+                    </div>
+
+                    <div class="col-6 p-2">
+                      <label for="contact" class="form-label required">Phone Number</label>
+                      <input type="tel" class="form-control" name="ycontact" id="phone" required>
+                    </div>
+                    <div class="col-6 p-2">
+                      <label for="email" class="form-label required">Email id</label>
+                      <input type="email" class="form-control" name="yemail" id="yemail" required>
+                    </div>
+
+                    <div class="col-12 p-2">
+                      <div class="col-md-6">
+                        <label for="pname" class="form-label required">Parents Name</label>
+                        <input type="text" class="form-control" name="pname" id="pname" required>
+                      </div>
+                    </div>
+
+                    <div class="col-6 p-2">
+                      <label for="pcontact" class="form-label required">Parent Contact Number</label>
+                      <input type="phone" class="form-control" name="pcontact" id="phone" required>
+                    </div>
+                    <div class="col-6 p-2">
+                      <label for="pemail" class="form-label required">Parent Email id</label>
+                      <input type="email" class="form-control" name="pemail" id="pemail" required>
+                    </div>
+
+                    <div class="col-12 p-2">
+                      <div class="col-md-6">
+                        <label for="program" class="form-label required">Categories</label>
+                        <Select name="program" class="form-select">
+                          <option value="none">Select a Program....</option>
+                          <option value="SUMMER">Summer</option>
+                          <option value="WINTER">Winter</option> 
+                        </select>
+                      </div>
+                    </div>
+      
+                    <div>
+                      <div class="mb-3 p-2">
+                          <label for="screenshot" class="form-label required">Screenshot of payment</label>
+                          <input class="form-control" type="file" name="screenshot" id="screenshot" required>
+                      </div>
+                    </div>
+                    
+                    <div class="col-12 p-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="tpcheck" id="tpcheck" required>
+                        <label class="form-check-label required" for="gridCheck">
+                          I have read and accepted the <a href="{% url 'aboutapp-terms' %}">Terms of Use and Privacy Policy.</a>
+                        </label>
+                      </div>
+                    </div>
+      
+                    <div class="col-12 p-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="encheck" required>
+                        <label class="form-check-label required" for="gridCheck">
+                          SNS may keep me informed via email about events and newsletters.
+                        </label>
+                      </div>
+                    </div>
+                    
+                    <div class="col-12 p-2">
+                      <button type="submit" class="btn btn-success mb-3">Submit</button>
+                    </div>
+          
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12 p-3">
+        {% include 'core/sidebar.html' %}
+      </div>
+      
+    </div>
+  </div>
+{% endblock content %}

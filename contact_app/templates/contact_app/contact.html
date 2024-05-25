@@ -1,0 +1,191 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | Contact Us {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+  <div class="content">
+    <div class="design row">
+      <div class="col-md-7 col-sm-12 m-2">
+        <div>
+          <div class="about-content px-2">
+            <div class="primary-heading">Contact Us</div>
+            <div>
+              <div class="my-3">
+                <p class="text-secondary fw-bold">Get in touch with us</p>
+                <p class="text-secondary">Feel free to contact us. Just select your preferred contact option and send us a message. We'll do everything we can to respond quickly</p>
+              </div>
+
+              <div class="messenger">
+                {% for msg in messages %}
+                  <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    {{msg}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+              </div>
+
+              <div class="contact-form">
+                <form action="" method="POST" class="row g-3">
+                  {% csrf_token %}
+                  <div class="col-md-12 pt-2">
+                    <h5>Feedback Form</h5>
+                  </div>
+                  <hr>
+                  <div class="col-md-6 is-required p-2">
+                    <label for="fullname" class="form-label required">Full Name</label>
+                    <input type="text" class="form-control" name="fname" id="fname" required>
+                  </div>
+                  <div class="col-md-6 p-2">
+                    <label for="email" class="form-label required">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" required>
+                  </div>
+        
+                  <div class="col-md-6 p-2">
+                    <label for="address" class="form-label required">Address</label>
+                    <input type="text" class="form-control" name="address" id="address" required>
+                  </div>
+                  <div class="col-md-6 p-2">
+                    <label for="contact" class="form-label required">Contact Number</label>
+                    <input type="text" class="form-control" name="contact" id="phone" required>
+                  </div>
+        
+                  <div class="col-md-12 p-2">
+                    <label for="feedback" class="form-label required">Feedback</label>
+                    <textarea name="feedback" id="feedback" rows="5" class="form-control" id="feedback" placeholder="leave your Feedback Here" required></textarea>
+                  </div>
+                  
+                  <div class="col-12 p-2">
+                    <button type="submit" class="btn btn-success mb-3">Submit</button>
+                  </div>
+        
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12 p-3">
+            <div class="info">
+              <div class="info-title"><h3>Sirjansil Nepali Samaj</h3></div>
+              <div class="info-title-np">जननी जन्मभूमिष्च स्वर्गादपि गरीयसी</div>
+            </div>
+            <div class="info">
+              <div><i class="bi bi-geo"></i> &nbsp; 1508-2152 Lawrence Ave East, Scarborough, Ontario M1R 0B5</div>
+              <div><i class="bi bi-envelope"></i> &nbsp; srijansilnepalisamaj@gmail.com</div>
+              <div><i class="bi bi-phone-vibrate"></i> &nbsp; +1 6473306132</div>
+            </div> 
+  
+            <div class="social flexer">
+              <h5>Follow Us:</h5>
+              <div class="media-icon">
+                <div><a href=""><i class="bi bi-facebook"></i></a></div>
+                <div><a href=""><i class="bi bi-linkedin"></i></a></div>
+                <div><a href=""><i class="bi bi-twitter-x"></i></a></div>
+              </div>
+            </div>
+  
+            <div class="map my-3">
+              <a href="https://www.google.com/maps/place/Scarborough,+ON+M1M+3R9/@43.7382345,-79.2219392" target="_blank" class="el-tooltip map" aria-describedby="el-tooltip-2642" tabindex="0">
+                <img src="/static/images/map.png" alt="Map">
+              </a>
+            </div>
+  
+            <div>
+              <div class="gallery-page pt-2">
+                <div class="design-list p-0 m-0">
+                  <div class="primary-heading">FAQs</div>
+                </div>
+              </div>
+              <div class="faq-form">
+                <div class="accordion" id="accordionExample">
+                  <div class="card">
+                    <div class="card-header" id="headingOne">
+                      <h2 class="mb-0">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#question1" aria-expanded="false" aria-controls="collapseExample">
+                          Who runs SNS?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="question1" class="collapse">
+                      <div class="card-body m-3">
+                        SNS is solely run by the energetic volunteering individuals who are like minded and have a common goal of serving community, and supporting our kids to enrich their skills.  
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="card">
+                    <div class="card-header" id="headingTwo">
+                      <h2 class="mb-0">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#question2" aria-expanded="false" aria-controls="collapseExample">
+                          Can we celebrate Nepali culture?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="question2" class="collapse">
+                      <div class="card-body m-3">
+                        SNS prime goal is to foster our Nepali Culture. We do celebrate our major festivals, Nepali New Year, Dashain, Tihar, Picnic, and Teej. You can celebrate closely with us becoming a member filling our membership forms. </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card">
+                    <div class="card-header" id="headingThree">
+                      <h2 class="mb-0">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#question3" aria-expanded="false" aria-controls="collapseExample">
+                          How can I be in touch with SNS?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="question3" class="collapse">
+                      <div class="card-body m-3">
+                        Subscribe to our newsletter to get all the updates of events and newsletters. You can also visit our social media and youtube channels to get latest updates about events.  
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="card">
+                    <div class="card-header" id="headingThree">
+                      <h2 class="mb-0">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#question4" aria-expanded="false" aria-controls="collapseExample">
+                          How to send my kids for practice session?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="question4" class="collapse">
+                      <div class="card-body m-3">
+                        You are always welcome in the dance practice. You need to download the registration form from our download section and send it to srijansilnepalisamaj@gmail.com.  
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="card">
+                    <div class="card-header" id="headingThree">
+                      <h2 class="mb-0">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#question5" aria-expanded="false" aria-controls="collapseExample">
+                          How can I contribute?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="question5" class="collapse">
+                      <div class="card-body m-3">
+                        There are multiple ways to contribute to the community via SNS. We can financially support our events by donating using website or supporting us as a volunteer in any event. You can show your interest for these through our website.  
+                      </div>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+          
+      </div>
+    </div>
+  </div>      
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | Terms & Condition {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+  <div class="content">
+    <div class="design row">
+
+      <div class="col-md-8 col-sm-12 p-3">
+        <div>
+          <div class="about-content m-3">
+            <div class="primary-heading">Terms and Condition</div>
+            <div>
+              <div class="pt-2 sub-heading fw-bold">SNS Community Terms of Use</div>
+                <div class="card py-3" style="width: 30rem;">
+                  <div class="img-size">
+                    <img src="{% static 'images/terms.jpg' %}" class="card-img-top" alt="...">
+                  </div>
+                </div>
+                <div class="about-content">
+                  {%for items in ter %}
+                    {{items.term_content | safe}} <br>
+                  {% endfor %}
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12 p-3">
+        {% include 'core/sidebar.html' %}
+      </div>
+
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %} SNS Canada | View Photo {% endblock title%}
+
+{% block content %}
+  <!-- dummy start -->
+  <div class="dummy">
+
+  </div>
+  <!-- dummy end -->
+
+  <div class="content">
+    <div class="gallery-page">
+      <div class="design-list">
+        <div class="primary-heading text-uppercase">{{photo.category.name}}</div>
+        <div class=""><a href="{% url 'galleryapp-gallery'%}" class="btn btn-secondary  px-4">Back</a></div>
+      </div>
+    </div>
+
+    <div class="design">
+      <div class="">
+        <div style="text-align: center; max-width: 1200px;">
+          <img src="{{photo.image.url}}" alt="Sorry No Picture Available currently..." style="height: 90vh;"/>
+          <p class="fs-1 p-3 text-wrap overflow-auto">{{photo.description}}</p>
+        </div>
+      </div>
+    </div> 
+  </div>
+{% endblock content %}
