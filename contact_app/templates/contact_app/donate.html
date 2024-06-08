@@ -19,7 +19,11 @@
               <div>
                 <div class="my-3">
                   <p class="text-secondary fw-bold">Donation</p>
-                  <p class="text-secondary">SNS is a volunteer-based organization working toward helping the local Nepalese family along with fostering our culture. Your donation will help us to increase our support to many more Nepalese family. You can directly contribute (interac) for good cause at <a href="mailto:fund.for.sns@gmail.com">fund.for.sns@gmail.com.</a></p>
+                  {% for item in ins %}
+                  {% if forloop.revcounter == 1%}
+                    <p class="text-secondary">{{item.instruct | safe}}</p>
+                  {% endif %}
+                  {% endfor %}
                 </div>
 
                 <div class="messenger">
@@ -77,7 +81,7 @@
                       </div>
                       <div class="col-4 p-2">
                         <label for="pcode" class="form-label required">Postal Code</label>
-                        <input type="number" class="form-control" name="pcode" id="pcode" required>
+                        <input type="text" class="form-control" name="pcode" id="pcode" required>
                       </div>
                       <div class="col-4 p-2">
                         <label for="country" class="form-label required">Country</label>
@@ -89,7 +93,7 @@
                       <div class="col-6 p-2">
                         <label for="donation_type" class="form-label required">Donation Type</label>
                         <Select name="donation_type" id="donation_type" class="form-select" required>
-                          <option>Select a Donation...</option>
+                          {% comment %} <option>Select a Donation...</option> {% endcomment %}
                           <option value="GENERAL">General</option>
                           <option value="COVID">Covid</option>
                           <option value="EARTHQUAKE">Earthquake</option>

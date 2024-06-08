@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class CreateEvent(models.Model):
     event_name = models.CharField(max_length= 100, null= False, blank= False)
-    event_created_date = models.DateField(auto_created= False, null= False)
+    event_created_date = models.DateField(auto_created= False, null= True)
 
     def __str__(self):
         return self.event_name

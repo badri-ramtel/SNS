@@ -17,7 +17,13 @@
             <div class="about-content">
               <div class="primary-heading">Vacancy</div>
               <div>
-                <div class="my-3"><p class="text-secondary">View and Apply for the Vacancy @ SNS</p></div>
+                <div class="my-3">
+                  {% for item in ins %}
+                    {% if forloop.revcounter == 1%}
+                      <p class="text-secondary">{{item.instruct | safe}}</p>
+                    {% endif %}
+                  {% endfor %}
+                </div>
                 <div class="aboutapp-text">
                     <div>
                       <table cellspacing="0" cellpadding="0" border="2">

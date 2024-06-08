@@ -25,26 +25,27 @@
                <li class="list-group-item"><a class="nav-link" href="{% url 'galleryapp-gallery' %}">All</a></li>
               {% for category in categories %}
               <li class="list-group-item text-nowrap nav-text">
-                 <a class="nav-link overflow-x-hidden" href="{% url 'galleryapp-gallery' %}?category={{category.name}}">{{category.name}}</a>
+                 <a class="nav-link overflow-x-hidden" href="{% url 'galleryapp-gallery' %}?category={{category.id}}">{{category.name}}</a>
               </li>
               {% endfor %}
              </ul>
           </div>
         </div>
       </div> 
-
+ 
       <div class="col-md-10">
         <div class="row">
           {% for photo in page_obj %}
           <div class="col-md-3 col-sm-6 m-0 p-0"> 
             <div class="album">
-              <div class="album-cover">
-                <img class="image-thumbnail w-100" src="{{photo.image.url}}" alt="picture here..."/>
-              </div>
-              <div class="album-text" id="gallery-view">
-                <div class="album-text-title">{{photo.category.name}}</div>
-                <a href="{% url 'galleryapp-photo' photo.id %}" class="text-white">View</a>
-              </div>
+              <a href="{% url 'galleryapp-photo' photo.id %}" class="text-white">
+                <div class="album-cover">
+                  <img class="image-thumbnail w-100" src="{{photo.image.url}}" alt="picture here..."/>
+                </div>
+                <div class="album-text" id="gallery-view">
+                  <div class="album-text-title">{{photo.category.name}}</div>
+                </div>
+              </a>
             </div>
           </div>
           {% empty %}

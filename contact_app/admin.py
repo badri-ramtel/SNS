@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django.contrib import messages
 from django.utils.translation import ngettext
-from contact_app.models import FeedBack, Member, Vacancy, Donation
+from contact_app.models import FeedBack, FeedbackInstruction, Member, MemberInstruction, Vacancy, VacancyInstruction, Donation, DonationInstruction
+from import_export.admin import ExportMixin
 
 # Register your models here.
 
     
-class FeedBackAdmin(admin.ModelAdmin):
+class FeedBackAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ['full_name', 'email', 'address', 'contact', 'status']
     actions = ["take_action"]
 
@@ -24,8 +25,9 @@ class FeedBackAdmin(admin.ModelAdmin):
         )
 
 admin.site.register(FeedBack, FeedBackAdmin)
+admin.site.register(FeedbackInstruction)
 
-class MemberAdmin(admin.ModelAdmin):
+class MemberAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'email', 'contact', 'address1', 'status']
     actions = ["take_action"]
 
@@ -43,9 +45,11 @@ class MemberAdmin(admin.ModelAdmin):
         )
 
 admin.site.register(Member,MemberAdmin)
+admin.site.register(MemberInstruction)
 admin.site.register(Vacancy)
+admin.site.register(VacancyInstruction)
 
-class DonationAdmin(admin.ModelAdmin):
+class DonationAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'email', 'contact', 'address_1', 'country', 'donation_type', 'status']
     actions = ["take_action"]
 
@@ -63,3 +67,4 @@ class DonationAdmin(admin.ModelAdmin):
         )
 
 admin.site.register(Donation, DonationAdmin)
+admin.site.register(DonationInstruction)

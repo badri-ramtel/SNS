@@ -2,7 +2,6 @@ from django.db import models
 from ckeditor.fields import RichTextField
 # Create your models here.
 
-
 class About(models.Model):
     about_content = RichTextField(null= False, blank= False)
 

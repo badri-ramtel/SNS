@@ -18,6 +18,7 @@
              <div class="primary-heading">President's Message</div>
              <div>
               {% for item in president %}
+              {% if forloop.revcounter0 < 1 %}
                 <div class="about-text d-flex">
                   <div class="president-detail col-md-4">
                     <img class="image-thumbnail" src="{{item.image.url}}" alt="picture here..."/>
@@ -25,6 +26,7 @@
                   </div>
                   <div class="col-md-8 px-5"><p>{{item.p_message}}</p></div>  
                 </div>
+              {% endif %}
               {% endfor %}
              </div>
            </div>

@@ -20,7 +20,11 @@
               <div> 
                 <div class="my-3">
                   <p class="text-secondary fw-bold">Membership</p>
-                  <p class="text-secondary">Please fill up the following form, pay the amount and upload the screenshot of the payment.</p>
+                  {% for item in ins %}
+                  {% if forloop.revcounter == 1%}
+                    <p class="text-secondary">{{item.instruct | safe}}</p>
+                  {% endif %}
+                  {% endfor %}
                 </div>
 
                 <div class="messenger">
@@ -76,7 +80,7 @@
                         </div>
                         <div class="col-4 p-2">
                           <label for="pcode" class="form-label required">Postal Code</label>
-                          <input type="number" class="form-control" name="pcode" id="pcode" required>
+                          <input type="text" class="form-control" name="pcode" id="pcode" required>
                         </div>
           
                         <div class="col-12 p-2">
@@ -86,13 +90,13 @@
                                 <div class="form-check">
                                   <input class="form-check-input" type="radio" name="membership" id="GENERAL" value="GENERAL" checked>
                                   <label class="form-check-label" for="general">
-                                    General Member (20$ for 2 Years Validate)
+                                    General Member (20$ for 2 Years)
                                   </label>
                                 </div>
                                 <div class="form-check">
                                   <input class="form-check-input" type="radio" name="membership" id="LIFETIME" value="LIFETIME">
                                   <label class="form-check-label" for="lifetime">
-                                    Life time Member (100$ for Life Time Validate)
+                                    Life time Member (100$ for Life Time)
                                   </label>
                                 </div>
                               </div>
@@ -117,8 +121,8 @@
           
                         <div class="col-12 p-2">
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="encheck" required>
-                            <label class="form-check-label required" for="gridCheck">
+                            <input class="form-check-input" type="checkbox" id="encheck">
+                            <label class="form-check-label" for="gridCheck">
                               SNS may keep me informed via email about events and newsletters.
                             </label>
                           </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from contact_app.models import FeedBack, Member, Vacancy, Donation
+from contact_app.models import FeedBack, FeedbackInstruction, Member, MemberInstruction, Vacancy, VacancyInstruction, Donation, DonationInstruction
 from event_app.models import Event, CreateEvent
 from django.contrib import messages
 
@@ -7,7 +7,6 @@ from django.contrib import messages
 # Create your views here.
 def contact(request):
     if request.method == 'POST':
-        # date = request.POST.get('date')
         name = request.POST.get('fname')
         email = request.POST.get('email')
         address = request.POST.get('address')
@@ -22,7 +21,9 @@ def contact(request):
         form.save()
         messages.success(request, 'SNS canada Thank you for your Feedback!')
         return redirect('contactapp-contact')
-    return render(request, 'contact_app/contact.html')
+    ins = FeedbackInstruction.objects.all()
+    context = {'ins': ins}
+    return render(request, 'contact_app/contact.html', context)
 
 
 def member(request):
@@ -54,16 +55,18 @@ def member(request):
         messages.success(request, 'Welcome to SNS Canada family')
         return redirect('contactapp-member')
     
+    ins = MemberInstruction.objects.all()
     eventor = CreateEvent.objects.all()
     news = Event.objects.filter(created_events__event_name= 'News')
-    context = {'eventor': eventor, 'news': news}
+    context = {'ins': ins, 'eventor': eventor, 'news': news}
     return render(request, 'contact_app/member.html', context)
 
 def vacancy(request):
     eventor = CreateEvent.objects.all()
     news = Event.objects.filter(created_events__event_name= 'News')
     vacancies = Vacancy.objects.all()
-    context = {'vacancies': vacancies, 'eventor': eventor, 'news': news}
+    ins = VacancyInstruction.objects.all()
+    context = {'vacancies': vacancies, 'eventor': eventor, 'news': news, 'ins': ins}
     return render(request, 'contact_app/vacancy.html', context)
 
 def view_vacancy(request, pk):
@@ -102,12 +105,12 @@ def donate(request):
                         amount= amount,
                         screenshot= screenshot,
                         )
-        # print(form.country)
         form.save()
         messages.success(request, 'Your generosity will always be remember By SNS Family!!!')
         return redirect('contactapp-donate')
     
+    ins = DonationInstruction.objects.all()
     eventor = CreateEvent.objects.all()
     news = Event.objects.filter(created_events__event_name= 'News')
-    context = {'eventor': eventor, 'news': news}
+    context = {'ins': ins, 'eventor': eventor, 'news': news}
     return render(request, 'contact_app/donate.html', context)

@@ -1,5 +1,5 @@
 from django.db import models
-# from django.core.validators import FileExtensionValidator 
+from django.core.validators import FileExtensionValidator 
 # Create your models here.
 
 class Slider(models.Model):
@@ -29,7 +29,7 @@ class President(models.Model):
         verbose_name_plural = 'President'
 
 class Subscribe(models.Model):
-    email = models.EmailField(max_length= 254, null= False, blank= False)
+    email = models.EmailField(max_length= 254)
 
     def __self__(self):
         return self.email
@@ -40,11 +40,12 @@ class Subscribe(models.Model):
         ordering = ['-id']
 
 
-class Adversite(models.Model):
+class Advertisement(models.Model):
     # content = models.FileField(upload_to='videos/advertisement/',null=True, validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
-    image = models.ImageField(upload_to= 'images/advertise/', null= False, blank= False)
+    content = models.ImageField(upload_to= 'images/advertise/', null= False, blank= False)
+
     def __str__(self):
-        return f'{self.image}'
+        return f'{self.content}'
     
     class Meta:
         db_table = 'Advertisement'

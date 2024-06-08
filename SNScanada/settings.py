@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'event_app',
     'gallery_app',
     'team_app',
-    'ckeditor'
+    'ckeditor',
+    'import_export'
 ]
 
 MIDDLEWARE = [

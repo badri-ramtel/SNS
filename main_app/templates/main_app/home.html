@@ -35,6 +35,7 @@
        <div class="col-md-4 col-sm-6 p-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="3000">
          <div>
           {% for item in pre %}
+          {% if forloop.revcounter0 < 1 %}
            <div class="card-design">
              <div class="text-center text-design">Message from President</div>
              <div class="card mx-4">
@@ -52,6 +53,7 @@
                <div class="read-more-one text-center"><a class="btn" href="{% url 'mainapp-president' %}">Read More...</a></div>
              </div>
            </div>
+          {% endif %}
           {% endfor %}
          </div>
        </div>
@@ -59,7 +61,7 @@
 </div>
 <!-- About and President content End -->
 
-<!-- events, news and docsuments css Start -->
+<!-- events, news and documents css Start -->
 <div class="content">
     <div class="design row">
 
@@ -160,21 +162,21 @@
 
       <!-- Gallery Start-->
       <div class="col-md-6 col-sm-12">
-        <div class="">
-          <div class="design-list d-flex justify-content-center">
+        <div class="photo-gallery">
+          <div class="design-list d-flex justify-content-center m-0">
             <div class="primary-heading overflow-hidden">Gallery</div>
           </div>
-          <div class="design-list" id="gallery">
+          <div class="design-list m-0" id="gallery">
             <div class="row gallery-view" id="gallery-views">
-              <div class="col-md-2" style="height: 22rem;">
+              <div class="col-md-2">
                 <div class="row">
                   <div class="card border border-primary overflow-hidden text-nowrap">
-                    <div class="text-center">Category</div>
+                    <div class="text-center bg-primary fw-bold py-2"><h4>Category</h4></div>
                     <ul class="list-group list-group-flush list-group-home" id="home-list-group">
                       {% for category in categories %}
                       <li class="list-group-item">
                         {% comment %} {{category.name}} {% endcomment %}
-                        <a class="text-dark" href="{% url 'galleryapp-gallery' %}?category={{category.name}}">{{category.name}}</a>
+                        <a class="text-dark bg-white" href="{% url 'mainapp-home' %}?category={{category.name}}">{{category.name}}</a>
                       </li>
                       {% endfor %}
                     </ul>
@@ -182,21 +184,21 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-10">
+ 
+              <div class="col-10 border border-primary" id="borders">
                 <div class="row">
                   {% for photo in photos %}
-                    {% if forloop.counter < 7 %}
+                    {% comment %} {{ forloop.counter }} {% endcomment %}
                       <div class="col-md-4 m-0 p-0"> 
                         <div class="album" id="home-album">
                           <div class="album-cover">
                             <a href="{% url 'galleryapp-photo' photo.id %}">
-                              <img class="image-thumbnail w-100" src="{{photo.image.url}}" alt="picture here..."/>
+                              <img class="image-thumbnail object-fit-fill w-100" src="{{photo.image.url}}" alt="picture here..."/>
                             </a>
                           </div>
                         </div> 
                       </div>
-                    {% endif %}
+                  {% comment %} {% endfor %} {% endcomment %}
                   {% empty %}
                     <div class="text-center m-5"><h3>No Photos Uploaded....</h3></div>
                   {% endfor %} 
@@ -211,10 +213,10 @@
       <!-- Calendar Start -->
       <div class="col-md-3 col-sm-6">
         <div>
-          <div class="design-list d-flex justify-content-center">
+          <div class="design-list d-flex justify-content-center m-0">
             <div class="primary-heading overflow-hidden">Calendar</div>
           </div> 
-          <div class="design-list">
+          <div class="design-list m-0">
             {% comment %} <div class="row"> {% endcomment %}
               <div class="calendar dark">
                 <div class="calendar_inner">
@@ -282,24 +284,30 @@
       <!-- ads and notice Start -->
       <div class="col-md-3 col-sm-6">
         <div>
-          <div class="design-list d-flex justify-content-center">
+          <div class="design-list d-flex justify-content-center m-0">
             <div class="primary-heading overflow-hidden">Ads/Notice</div>
           </div>
 
-          <div class="design-list justify-content-center" >
+          <div class="design-list justify-content-center m-0" >
             <div>
-                {% comment %} <video style="height: 340px; max-width: 300px;" autoplay muted>
-                  {% for obj in adv %}
-                    {% if forloop.counter == 1 %}
+              <!-- Carousel wrapper -->
+              <div id="carouselVideoExample" class="carousel slide carousel-dark carousel-fade" data-bs-touch="true" data-bs-ride="carousel">
+                <!-- Inner -->
+                <div class="carousel-inner carousel-zoom">
+                  <!-- Single item -->
+                  {% for obj in ads %}
+                  <a href="{% url 'advertise' obj.id %}" class="text-white">
+                  <div class="carousel-item active overflow-hidden" id="ads-section">
+                    {% comment %} <video class="img-fluid" style="height: 340px; max-width: 300px; object-fit: cover; border-radius: 5px;" autoplay loop muted>
                       <source src="{{obj.content.url}}" type="video/mp4">
-                    {% endif %}
-                  {% endfor %}
-                </video> {% endcomment %}
-                {% for obj in adv %}
-                  {% if forloop.counter == 1 %}
-                    <img class="image-thumbnail" src="{{obj.image.url}}" alt="picture here..." style="height: 340px; width: 310px;"/>
-                  {% endif %}
-                {% endfor %}
+                    </video> {% endcomment %}
+                    <img src="{{obj.content.url}}" alt="..." class="img-responsive">
+                  </div>
+                  </a>
+                  {% endfor %}                        
+                </div>
+              </div>
+              <!-- Carousel wrapper -->
             </div>
           </div>
         </div>

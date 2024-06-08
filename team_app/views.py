@@ -7,9 +7,11 @@ def team(request):
     teams = request.GET.get('member')
     if teams == None:
         community = Committee.objects.filter(year__current_year= True)
+        quote = SubMenu.objects.filter(year__current_year= True)
         # community = Committee.objects.all()
     else:
         community = Committee.objects.filter(year__year_frame= teams)
+        quote = SubMenu.objects.filter(year__year_frame= teams)
         
     committee = Year_Book.objects.all() 
     paginator = Paginator(community,12)
@@ -23,7 +25,6 @@ def team(request):
     except EmptyPage:
         page_obj = paginator.get_page(paginator.num_pages)
 
-    quote = SubMenu.objects.all()
     context = {'page_obj': page_obj, 'committee': committee, 'quote': quote}
     return render(request, 'team_app/committee.html', context) 
 

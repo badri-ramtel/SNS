@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from event_app.models import Event, CreateEvent
-from document_app.models import Laws, References, Appreciations, Registrations, Program_Registrations
+from document_app.models import Laws, References, Appreciations, Registrations, RegistrationInstruction, Program_Registrations
 from django.contrib import messages
 
 # Create your views here.
@@ -42,6 +42,7 @@ def register(request):
         parents_email = request.POST.get('pemail')
         program = request.POST.get('program')
         screenshot = request.FILES.get('screenshot')
+        manual = request.FILES.get('manual')
         form = Program_Registrations(
             participant_full_name= your_name, 
             age= age, 
@@ -56,6 +57,7 @@ def register(request):
             parents_email = parents_email,
             program = program,
             screenshot= screenshot,
+            manual= manual,
             )
         form.save()
         messages.success(request, 'SNS Family Thank you for registering!!!')
@@ -64,5 +66,6 @@ def register(request):
     eventor = CreateEvent.objects.all()
     news = Event.objects.filter(created_events__event_name= 'News')
     reg = Registrations.objects.all()
-    context = {'eventor': eventor, 'news': news, 'reg': reg}
+    ins = RegistrationInstruction.objects.all()
+    context = {'eventor': eventor, 'news': news, 'reg': reg, 'ins': ins}
     return render(request, 'document_app/program_registration.html', context)

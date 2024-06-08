@@ -17,7 +17,11 @@
             <div class="about-content">
               <div class="primary-heading">Program Registration</div>
               <div>
-                <div class="my-3"><p class="text-secondary">View and download the Company Program Registration Forms</p></div>
+                {% for item in ins %}
+                {% if forloop.revcounter == 1%}
+                  <div class="my-3"><p class="text-secondary">{{item.instruct | safe}}</p></div>
+                {% endif %}
+                {% endfor %}
                 <div class="aboutapp-text">
                     <div>
                       <table cellspacing="0" cellpadding="0" border="2">
@@ -55,7 +59,7 @@
                       </table>
                     </div>
                 </div>
-
+ 
                 <div class="messenger pt-3">
                   {% for msg in messages %}
                     <div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -143,6 +147,13 @@
                           <input class="form-control" type="file" name="screenshot" id="screenshot" required>
                       </div>
                     </div>
+
+                    <div>
+                      <div class="mb-3 p-2">
+                          <label for="screenshot" class="form-label required">Upload Your Manual Registration Files</label>
+                          <input class="form-control" type="file" name="manual" id="manual" required>
+                      </div>
+                    </div>
                     
                     <div class="col-12 p-2">
                       <div class="form-check">
@@ -155,8 +166,8 @@
       
                     <div class="col-12 p-2">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="encheck" required>
-                        <label class="form-check-label required" for="gridCheck">
+                        <input class="form-check-input" type="checkbox" id="encheck">
+                        <label class="form-check-label" for="gridCheck">
                           SNS may keep me informed via email about events and newsletters.
                         </label>
                       </div>

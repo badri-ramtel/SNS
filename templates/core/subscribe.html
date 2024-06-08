@@ -1,26 +1,26 @@
 <!-- Subscribe Start -->
-<section class="subscribe flexer row">
-    <div class="col-md-8 col-sm-6 px-5">
-      <div class="px-5">
-        <div id="scroll-container">
-          <div class="subscribe-title" id="scroll-text">
-            <h2>Subscribe to our Newsletter</h2>
-          </div>
+<section class="subscribe flexer row d-flex justify-content-center">
+  <div class="col-md-8 col-sm-6 px-5">
+    <div class="px-5">
+      <div id="scroll-container">
+        <div class="subscribe-title" id="scroll-text">
+          <h2>Subscribe to our Newsletter</h2>
         </div>
       </div>
     </div>
-      
-    <div class="col-md-4 col-sm-6">
-      <div class="subscribe-form">
-        <div>
-          <form action="http://127.0.0.1:8000/subscribe/" onsubmit="myFunction()" method="POST" class="sub-form">
-            {% csrf_token %}
-              <input type="email" name="email" id="email" placeholder="Your Email Address Here" class="mt-2" required>
-              <button type="submit" class="sub-btn mt-2" >Subscribe</button>
-          </form>
-        </div>
+  </div>
+    
+  <div class="col-md-4 col-sm-6">
+    <div class="subscribe-form">
+      <div>
+        <form action="http://127.0.0.1:8000/subscribe/" onsubmit="myFunction()" method="POST" class="sub-form">
+          {% csrf_token %}
+            <input type="email" name="email" id="email" placeholder="Your Email Address Here" class="mt-2 justify-content-center" required>
+            <button type="submit" class="sub-btn mt-2 justify-content-center" >Subscribe</button>
+        </form>
       </div>
     </div>
-      
+  </div>
+    
 </section>
 <!-- Subscribe End -->

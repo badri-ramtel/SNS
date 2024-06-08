@@ -1,0 +1,16 @@
+.carousel-fade .carousel-inner .carousel-item {
+    opacity: 0;
+    transition-property: opacity;
+      overflow:hidden;
+  }
+  .carousel-fade .carousel-item.active img {
+      transition: transform 5000ms linear 0s;
+      /* This should be based on your carousel setting. For bs, it should be 5second*/
+      transform: scale(1.05, 1.05);
+  }
+  .carousel-fade .carousel-inner .active {
+    opacity: 1;
+  }
+
+  
+  

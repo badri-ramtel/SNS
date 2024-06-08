@@ -6,7 +6,7 @@ class Category(models.Model):
     name = models.CharField(max_length=50, null= False, blank= False)
 
     def __str__(self):
-        return self.name
+        return str(self.id)
     
     class Meta:
         db_table = 'Category'
@@ -20,7 +20,7 @@ class Photo(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return self.description 
+        return f'{self.description}::{self.category}' 
     
     class Meta:
         db_table = 'Photo'

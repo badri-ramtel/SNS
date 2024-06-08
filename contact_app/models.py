@@ -1,12 +1,11 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-# from phonenumber_field.modelfields import PhoneNumberField
-# from django_countries.fields import CountryField
+from django.db import models
 
 # Create your models here.
 STATUS_CHOICES = (
     ('R', 'Read'),
-    ('U', 'Unread'),
+    ('U', 'Unread')
 )
 
 class FeedBack(models.Model):
@@ -14,7 +13,6 @@ class FeedBack(models.Model):
     full_name = models.CharField(max_length= 100, null= False, blank= False)
     email = models.EmailField(max_length= 254, null= False, blank= False) 
     address = models.CharField(max_length= 200, null= False, blank= False)
-    # contact = PhoneNumberField(max_length= 13, blank= False, help_text= 'your contact number')
     contact = models.CharField(max_length= 15, null= False, blank= False)
     feedback = models.TextField(null= False, blank= False)
     status = models.CharField(max_length= 1, choices= STATUS_CHOICES, default= "U")
@@ -23,13 +21,23 @@ class FeedBack(models.Model):
         return f'{self.full_name}- ({self.date})'
     
     class Meta:
-        db_table = 'Contact'
-        verbose_name_plural = 'Contact'
+        db_table = 'Feedback'
+        verbose_name_plural = 'Feedback'
         ordering = ['-id']
+
+class FeedbackInstruction(models.Model):
+    instruct = RichTextField(null= False, blank= False)
+
+    def __self__(self):
+        return f'{self.instruct}'
+
+    class Meta:
+        db_table = 'Feedback Instruction'
+        verbose_name_plural = 'Feedback Instruction'
 
 CONDITION = (
     ('C', 'Confirmed'),
-    ('U', 'Unconfirm'),
+    ('U', 'Unconfirm')
 )
 
 class Member(models.Model):
@@ -37,13 +45,12 @@ class Member(models.Model):
     first_name = models.CharField(max_length= 100, null= False, blank= False)
     last_name = models.CharField(max_length= 100, null= False, blank= False)
     email = models.EmailField(max_length= 254, null= False, blank= False)
-    # contact = PhoneNumberField(max_length= 13, blank= False, help_text= 'your contact number')
     contact = models.CharField(max_length= 15, null= False, blank= False)
     address1 = models.CharField(max_length= 200, null= False, blank= False)
     address2 = models.CharField(max_length= 200, null= True, blank= True)
     city = models.CharField(max_length= 400, null= False, blank= False)
     province = models.CharField(max_length= 400, null= False, blank= False)
-    postal_code = models.IntegerField(null= False, blank= False)
+    postal_code = models.CharField(max_length= 15, null= False, blank= False)
     members = (
         ("GENERAL", 'general'), 
         ("LIFETIME", 'lifetime'),
@@ -60,6 +67,15 @@ class Member(models.Model):
         verbose_name_plural = 'Member'
         ordering = ['-id']
 
+class MemberInstruction(models.Model):
+    instruct = RichTextField(null= False, blank= False)
+
+    def __self__(self):
+        return f'{self.instruct}'
+
+    class Meta:
+        db_table = 'Member Instruction'
+        verbose_name_plural = 'Member Instruction'
 
 class Vacancy(models.Model):
     f_name = models.CharField(max_length= 200, null= False, blank= False)
@@ -75,6 +91,16 @@ class Vacancy(models.Model):
         verbose_name_plural = 'vacancy'
         ordering = ['-id']
 
+class VacancyInstruction(models.Model):
+    instruct = RichTextField(null= False, blank= False)
+
+    def __self__(self):
+        return f'{self.instruct}'
+
+    class Meta:
+        db_table = 'Vacancy Instruction'
+        verbose_name_plural = 'Vacancy Instruction'
+
 
 class Donation(models.Model):
     date = models.DateTimeField(auto_now= True, auto_created= True)
@@ -86,7 +112,7 @@ class Donation(models.Model):
     address_2 = models.CharField(max_length= 200, null= True, blank= True)
     city = models.CharField(max_length= 400, null= False, blank= False)
     state = models.CharField(max_length= 400, null= False, blank= False)
-    postal_code = models.IntegerField(null= False, blank= False)
+    postal_code = models.CharField(max_length= 15, null= False, blank= False)
     # country = CountryField(blank_label="select country")
     country = models.CharField(max_length=200, null= False, blank= False)
     donate = (
@@ -106,3 +132,13 @@ class Donation(models.Model):
         db_table = 'Donation'
         verbose_name_plural = 'Donation'
         ordering = ['-id']
+
+class DonationInstruction(models.Model):
+    instruct = RichTextField(null= False, blank= False)
+
+    def __self__(self):
+        return f'{self.instruct}'
+
+    class Meta:
+        db_table = 'Donation Instruction'
+        verbose_name_plural = 'Donation Instruction'
